@@ -19,6 +19,7 @@ public class SequenceNode extends BasicEntity{
     public static final String SEQUENCE_PROPERTY = "sequence";
     public static final String LENGTH_PROPERTY = "length";
     public static final String GENE_PROPERTY = "gene";
+    public static final String ID_PROPERTY = "id";
 
 
     public SequenceNode(Node n){
@@ -28,11 +29,13 @@ public class SequenceNode extends BasicEntity{
     public String getSequence(){    return String.valueOf(node.getProperty(SEQUENCE_PROPERTY));}
     public int getLength(){    return Integer.parseInt(String.valueOf(node.getProperty(LENGTH_PROPERTY)));}
     public String getGene(){    return String.valueOf(node.getProperty(GENE_PROPERTY)); }
+    public String getId(){  return String.valueOf(node.getProperty(ID_PROPERTY));}
 
 
     public void setSequence(String value){  node.setProperty(SEQUENCE_PROPERTY, value);}
     public void setLength(int value){  node.setProperty(LENGTH_PROPERTY, String.valueOf(value));}
     public void setGene(String value){  node.setProperty(GENE_PROPERTY, value);}
+    public void setId(String value){    node.setProperty(ID_PROPERTY, value);}
 
 
     @Override
@@ -54,7 +57,8 @@ public class SequenceNode extends BasicEntity{
     public String toString(){
         return "sequence = " + getSequence() + "\n" +
                 "length = " + getLength() + "\n" + 
-                "gene = " + getGene();
+                "gene = " + getGene() + "\n" +
+                "id = " + getId();
     }
 
 }
