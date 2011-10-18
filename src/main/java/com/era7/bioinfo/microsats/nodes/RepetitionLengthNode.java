@@ -5,7 +5,13 @@
 package com.era7.bioinfo.microsats.nodes;
 
 import com.era7.bioinfo.bioinfoneo4j.BasicEntity;
+import com.era7.bioinfo.microsats.relationships.RepetitionLengthRel;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import org.neo4j.graphdb.Direction;
 import org.neo4j.graphdb.Node;
+import org.neo4j.graphdb.Relationship;
 
 /**
  *
@@ -28,6 +34,15 @@ public class RepetitionLengthNode extends BasicEntity{
 
     public void setValue(int value){  node.setProperty(VALUE_PROPERTY, String.valueOf(value));}
 
+    
+    public List<RepetitionNode> getRepetitions(){
+        LinkedList<RepetitionNode> list = new LinkedList<RepetitionNode>();
+        Iterator<Relationship> iterator = node.getRelationships(new RepetitionLengthRel(null), Direction.INCOMING).iterator();
+        while(iterator.hasNext()){
+            list.add(new RepetitionNode(iterator.next().getStartNode()));
+        }
+        return list;
+    }
 
     @Override
     public int hashCode(){

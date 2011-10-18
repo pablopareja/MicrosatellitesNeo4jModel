@@ -27,7 +27,6 @@ public class MicrosatellitesManager extends Neo4jManager{
     private static String LUCENE_ST = "lucene";
     private static String TYPE_ST = "type";
     
-    private GraphDatabaseService graphDbService = null;
     
     //-----------------node indexes-----------------------
     private Index<Node> repetitionLengthValueIndex = null;
@@ -44,10 +43,10 @@ public class MicrosatellitesManager extends Neo4jManager{
         indexProps.put(TYPE_ST, EXACT_ST);
                 
         //----------node indexes-----------
-        repetitionLengthValueIndex = graphDbService.index().forNodes(RepetitionLengthNode.REPETITION_LENGTH_VALUE_INDEX, indexProps);
-        repetitionStringIndex = graphDbService.index().forNodes(RepetitionNode.REPETITION_STRING_INDEX, indexProps);      
-        projectNameIndex = graphDbService.index().forNodes(ProjectNode.PROJECT_NAME_INDEX,indexProps);
-        sequenceIdIndex = graphDbService.index().forNodes(SequenceNode.SEQUENCE_ID_INDEX,indexProps);
+        repetitionLengthValueIndex = graphService.index().forNodes(RepetitionLengthNode.REPETITION_LENGTH_VALUE_INDEX, indexProps);
+        repetitionStringIndex = graphService.index().forNodes(RepetitionNode.REPETITION_STRING_INDEX, indexProps);      
+        projectNameIndex = graphService.index().forNodes(ProjectNode.PROJECT_NAME_INDEX,indexProps);
+        sequenceIdIndex = graphService.index().forNodes(SequenceNode.SEQUENCE_ID_INDEX,indexProps);
         
     }
     
